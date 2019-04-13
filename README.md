@@ -1,3 +1,2 @@
-# dotfiles.kubuntu
-
-kubuntu dotfiles! testing the Dell XPS13.
+# dotfiles.nixos
+nixos dotfiles. with wayland/sway.

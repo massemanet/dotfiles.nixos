@@ -1,30 +1,24 @@
 #!/bin/bash
 
-sudo apt-get update && \
-sudo apt-get upgrade -y && \
-sudo apt-get install -y \
-     apt-transport-https \
-     curl deborphan emacs-lucid \
-     feh g++ git htop i3 jq libnotify-bin \
-     make mosh ncdu netcat-traditional nodm \
-     pass powertop \
-     qutebrowser \
-     scrot shellcheck \
-     tmux xautolock
+# install nixos from USB stick
 
-# snap is nice if it works
-# the docker snap is sadly broken
-sudo snap install chromium firefox opera spotify
-sudo snap install intellij-idea-community --classic
+# boot into root
+nix-channel --add https://nixos.org/channels/nixos-19.03 nixos
+curl -fsSL https://raw.githubusercontent.com/massemanet/dotfiles.nixos/master/install/configuration.nix > /etc/nixos/configuration.nix
+nixos-rebuild switch --upgrade
+
+# boot in as user
+
+## get ssh keys
 
 # get my stuff
 [ ! -e ~/.git ] &&
     cd /tmp && \
-	rm -rf dotfiles.kubuntu && \
-	git clone https://github.com/massemanet/dotfiles.kubuntu && \
-	cd dotfiles.kubuntu && \
-	git remote set-url origin git@github.com:massemanet/dotfiles.kubuntu && \
-	mv /tmp/dotfiles.kubuntu/.git ~
+	rm -rf dotfiles.nixos && \
+	git clone https://github.com/massemanet/dotfiles.nixos && \
+	cd dotfiles.nixos && \
+	git remote set-url origin git@github.com:massemanet/dotfiles.nixos && \
+	mv /tmp/dotfiles.nixos/.git ~
 (cd && git reset --hard)
 
 ~/bin/install.sh aws-vault

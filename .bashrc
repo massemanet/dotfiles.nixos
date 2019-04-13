@@ -16,8 +16,6 @@ shopt -s checkwinsize
 # pretty colors
 eval "$(dircolors)"
 
-. /etc/bash_completion
-
 # define some git helpers
 # shellcheck source=bin/gitfunctions
 [ -f ~/bin/gitfunctions ] && . ~/bin/gitfunctions

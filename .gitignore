@@ -6,7 +6,6 @@ foo*
 
 /.ICEauthority
 /.IdeaIC*/
-/.Xauthority
 /.aspell.*
 /.aws/
 /.awsvault/
@@ -15,6 +14,7 @@ foo*
 /.cache/
 /.cask/
 /.config/
+/.dbus/
 /.docker/
 /.emacs.d/
 /.face*
@@ -28,6 +28,8 @@ foo*
 /.local/
 /.localbashrc
 /.mozilla/
+/.nix-defexpr/
+/.nix-profile
 /.nmcli*
 /.password-store/
 /.pgAdmin*
@@ -37,22 +39,11 @@ foo*
 /.pki/
 /.pulse-cookie
 /.python_history
-/.screenlayout/
 /.ssh/
 /.steam/
-/.steampath
-/.steampid
-/.sudo_as_admin_successful
-/.uplink/
-/.xpra/
-/.xsession-errors
 
 /Desktop/
 /Downloads/
-/coverage/
-/snap/
-/stale_outputs_checked
-/pgadmin.log
 
 /git/
 /wg2/
