@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 {
   echo "CONTAINER IMAGE REPO TAG PORTS";

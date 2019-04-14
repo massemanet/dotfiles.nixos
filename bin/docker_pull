@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 REGISTRY=https://registry.hub.docker.com
 USER=massemanet

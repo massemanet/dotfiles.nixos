@@ -21,6 +21,7 @@ foo*
 /.gnupg/
 /.gtkrc-*
 /.intellij/
+/install/hardware-configuration.nix
 /.java/
 /.kde/
 /.lastpass/

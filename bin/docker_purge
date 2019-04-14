@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DC="$(docker_cleanup | grep -v REPO)"
 for R in $(echo "$DC" | awk '{print $1}' | sort -u)

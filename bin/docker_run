@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 err() {
     echo "$0 <image> [<command> [<volume>]]"
@@ -59,7 +59,7 @@ xconf() {
 
 [ -z "$1" ] && err "specify image"
 IMAGE="${1}"
-CMD="${2:-/bin/bash}"
+CMD="${2:-/usr/bin/env bash}"
 VOL="${3:-/tmp/docker}"
 
 flags FLAGS "$VOL"

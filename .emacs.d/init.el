@@ -3,7 +3,7 @@
 ;;; package handling
 (package-initialize)
 (require 'cask (car (sort (file-expand-wildcards
-                           "~/.emacs.d/.cask/*/elpa/cask-*/cask.el")
+                           "~/.cask/cask.el")
                           'string>)))
 (cask-initialize)
 (require 'pallet)

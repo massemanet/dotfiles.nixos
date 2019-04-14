@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # -*- mode: shell-script -*-
 
 set -f
@@ -10,7 +10,9 @@ find "$d" \
      -path "*/Library" -prune -o \
      -path "*/.Trash"  -prune -o \
      -path "*/.svn"    -prune -o \
+     -path "*/.nix-defexpr"   -prune -o \
      -path "*-cache"   -prune -o \
+     -path "*/.cache"   -prune -o \
      -path "*.pem"     -prune -o \
      -path "*/.git"    -prune -o \
      -path "*/.eunit"  -prune -o \

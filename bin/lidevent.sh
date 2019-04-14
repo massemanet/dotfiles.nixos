@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "user - $(whoami) - 1:$1 2:$2 3:$3" >> /tmp/liduevent.log
 echo "$(DISPLAY=:0 xrandr | grep " conn")" >> /tmp/liduevent.log
