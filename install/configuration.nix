@@ -46,6 +46,7 @@
     kitty
     libinput
     mosh
+    python3
     qutebrowser
     shellcheck
     slurp
