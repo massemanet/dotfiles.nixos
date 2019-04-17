@@ -21,7 +21,6 @@ foo*
 /.gnupg/
 /.gtkrc-*
 /.intellij/
-/install/hardware-configuration.nix
 /.java/
 /.kde/
 /.lastpass/
@@ -35,7 +34,6 @@ foo*
 /.password-store/
 /.pgAdmin*
 /.pgadmin*
-/.pgadmin3
 /.pgpass
 /.pki/
 /.pulse-cookie
@@ -43,6 +41,7 @@ foo*
 /.ssh/
 /.steam/
 
+/install/hardware-configuration.nix
 /Desktop/
 /Downloads/
 

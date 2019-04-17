@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # Use systemd boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,23 +38,42 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    awscli
+    aws-vault
+    bazel
     coreutils-full
     curl
+    docker
+    docker-compose
     emacs
+    erlang
+    file
+    flatpak
     git
+    gnupg
     grim
     gnumake
     jq
-    kitty
+    keybase
+    kubectl
     libinput
     mosh
+    lsof
+    lxqt.pavucontrol-qt
+    pass
+    pgadmin
     python3
     qutebrowser
+    rebar3
     shellcheck
     slurp
+    spotify
     sway
     termite
     tmux
+    tree
+    tshark
+    wireshark
     xwayland
   ];
 
@@ -65,6 +86,12 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # enable acpid
+  services.acpid.enable = true;
+  services.acpid.logEvents = true;
+  services.acpid.lidEventCommands =
+    "echo user - $(whoami) - 1:$1 2:$2 3:$3 >> /tmp/liduevent.log";
 
   # fonts
   fonts.fonts = with pkgs; [
