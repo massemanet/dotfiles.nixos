@@ -17,6 +17,7 @@ foo*
 /.dbus/
 /.docker/
 /.emacs.d/
+/.esd_auth
 /.face*
 /.gnupg/
 /.gtkrc-*
