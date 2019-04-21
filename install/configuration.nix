@@ -37,7 +37,6 @@
     aspell
     awscli
     aws-vault
-    bazel
     coreutils-full
     curl
     docker
@@ -45,11 +44,10 @@
     emacs
     file
     flatpak
-    gcc
+    fzf
     git
     gnupg
     grim
-    gnumake
     jq
     keybase
     kubectl
@@ -59,12 +57,13 @@
     lxqt.pavucontrol-qt
     pass
     pgadmin
-    python3
     qutebrowser
     shellcheck
     slurp
     spotify
     sway
+    swayidle
+    swaylock
     termite
     tmux
     tree
@@ -74,12 +73,16 @@
     xwayland
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
 
   # List services that you want to enable:
+
+  # Enable flatpak
+  services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

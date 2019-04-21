@@ -41,6 +41,7 @@ foo*
 /.python_history
 /.ssh/
 /.steam/
+/.var/
 
 /install/hardware-configuration.nix
 /Desktop/
