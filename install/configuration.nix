@@ -81,10 +81,8 @@
 
   # List services that you want to enable:
 
-  # Enable flatpak
   services.flatpak.enable = true;
-
-  # Enable the OpenSSH daemon.
+  services.keybase.enable = true;
   services.openssh.enable = true;
 
   # enable acpid
