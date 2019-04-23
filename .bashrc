@@ -27,20 +27,22 @@ export EDITOR="emacsclient -ct -a ''"
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWDIRTYSTATE=true
-export PROMPT_COMMAND='prompt_exit LX; prompt_title ; prompt_history'
+export PROMPT_COMMAND='prompt_exit LX; prompt_ps ; prompt_title ; prompt_history'
 if [ -f ~/.kube/config ] && test "$(command -v kubectl)" ; then
     PROMPT_COMMAND+="; prompt_k8s"
 fi
+export PS=""
+# shellcheck disable=SC2016
 if [ "$TERM" != "dumb" ]; then
     # set a fancy prompt
-    export PS1='\[\e[33m\]\h'
-    export PS1+='\[\e[34m\]${K8S:+[${K8S}]}'
-    export PS1+='\[\e[36m\]${AWS_VAULT:+[${AWS_VAULT}]}'
-    export PS1+='\[\e[35m\]($(mygitdir):$(mygitbranch))'
-    export PS1+='\[\e[32m\]${LX:+\[\e[31m\]($LX)}$'
-    export PS1+='\[\e[0m\] '
+    PS='\[\e[33m\]\h'
+    PS+='\[\e[34m\]${K8S:+[${K8S}]}'
+    PS+='\[\e[36m\]${AWS_VAULT:+[${AWS_VAULT}]}'
+    PS+='\[\e[35m\]($(mygitdir):$(mygitbranch))'
+    PS+='\[\e[32m\]${LX:+\[\e[31m\]($LX)}$'
+    PS+='\[\e[0m\] '
 else
-    export PS1="\\h\\$ "
+    PS="\\h\\$ "
 fi
 
 dir()  { ls -AlFh --color "$@"; }
@@ -70,6 +72,10 @@ wg2()    { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/wg2"}"; }
 
 prompt_exit() {
     eval "$1='$?'; [ \$$1 == 0 ] && unset $1"
+}
+
+prompt_ps() {
+    export PS1="$PS"
 }
 
 prompt_title() {

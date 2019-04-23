@@ -1,17 +1,43 @@
 #!/bin/bash
 
-# install nixos from USB stick
+# boot into installer
+# set up the disk (efi boot, 8G swap, full disk encryption, LVM)
+## see e.g. https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134
+cat > /dev/null <<EOF
+$ gdisk /dev/sda
+    o (create new empty partition table)
+    n (add partition, 500M, type ef00 EFI)
+    n (add partition, remaining space, type 8300 Linux LVM)
+    w (write partition table and exit)
+$ cryptsetup luksFormat /dev/sda2
+$ cryptsetup luksOpen /dev/sda2 enc-pv
+$ pvcreate /dev/mapper/enc-pv
+$ vgcreate vg /dev/mapper/enc-pv
+$ lvcreate -L 8G -n swap vg
+$ lvcreate -l '100%FREE' -n root vg
+$ mkfs.fat /dev/sda1
+$ mkfs.ext4 -L root /dev/vg/root
+$ mkswap -L swap /dev/vg/swap
+$ mount /dev/vg/root /mnt
+$ mkdir /mnt/boot
+$ mount /dev/sda1 /mnt/boot
+$ swapon /dev/vg/swap
+EOF
 
 # boot into root
 nix-channel --add https://nixos.org/channels/nixos-19.03 nixos
-curl -fsSL https://raw.githubusercontent.com/massemanet/dotfiles.nixos/master/install/configuration.nix > /etc/nixos/configuration.nix
+URL=https://raw.githubusercontent.com/massemanet/dotfiles.nixos
+curl -fsSL "$URL/master/install/configuration.nix" > /etc/nixos/configuration.nix
 nixos-rebuild switch --upgrade
 
 # boot in as user
 
 ## get ssh keys
+mkdir -p ~/.ssh
+scp massema.net:~/.ssh/id_rsa ~/.ssh/
+scp massema.net:~/.ssh/id_rsa.pub ~/.ssh/
 
-# get my stuff
+## get my stuff
 [ ! -e ~/.git ] &&
     cd /tmp && \
 	rm -rf dotfiles.nixos && \
@@ -21,43 +47,22 @@ nixos-rebuild switch --upgrade
 	mv /tmp/dotfiles.nixos/.git ~
 (cd && git reset --hard)
 
-~/bin/install.sh aws-vault
-~/bin/install.sh awscli
-~/bin/install.sh bazel 0.19
-~/bin/install.sh docker
-~/bin/install.sh docker-compose
-~/bin/install.sh erlang
-~/bin/install.sh java
-~/bin/install.sh keybase
-~/bin/install.sh pgadmin
-~/bin/install.sh python
+## keep nix conf in ~ so we can git control
+sudo rm  /etc/nixos/configuration.nix && \
+    sudo ln -s ~/install/configuration.nix /etc/nixos/ && \
+    ln -s /etc/nixos/hardware-configuration.nix ~/install/
 
-# emacs (cask)
+## emacs (cask)
+### could be done with nixos, but what about pallet
 [ ! -d ~/.cask ] && \
-    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go > /tmp/c && \
+    nix-shell -p python3 --command "python /tmp/c"
 (cd ~/.emacs.d && ~/.cask/bin/cask install)
 
-# edit /etc/default/nodm to have these lines
-# NODM_ENABLED=true
-# NODM_USER=masse
-# NODM_XSESSION=/home/masse/.xsession
+## flatpak is kind of nice
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# set up lid event
-# /etc/acpi/events/lidevent
-# event=button/lid
-# action=/etc/acpi/lidevent.sh "%e"
-
-# /etc/acpi/lidevent.sh
-# #!/bin/bash
-# for f in /home/*/bin/lidevent.sh
-# do if [ -x "$f" ]
-#    then su $(stat -c "%U" $f) -c "$f $1"
-#    fi
-# done
-
-# let systemd resolve
-# /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
-# tell systemd resolver to use google
-# /etc/systemd/resolved.conf
-# [Resolve]
-# DNS=8.8.8.8
+# firefox nightly (with wayland)
+flatpak remote-add --from org.mozilla.FirefoxRepo \
+        https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxRepo.flatpakrepo
+flatpak install org.mozilla.FirefoxRepo org.mozilla.FirefoxNightly
