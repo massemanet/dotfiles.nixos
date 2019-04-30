@@ -35,6 +35,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     aspell
+    aspellDicts.en
+    aspellDicts.sv
     awscli
     aws-vault
     coreutils-full
@@ -72,6 +74,8 @@
     wireshark
     xwayland
   ];
+
+  # enable swaylock to unlock
 
   security.pam.services.swaylock = {
     text = ''

@@ -1,4 +1,6 @@
 # droppings
+
+*.beam
 *~
 .\#*
 \#*
@@ -17,6 +19,7 @@ foo*
 /.dbus/
 /.docker/
 /.emacs.d/
+/.erl*
 /.esd_auth
 /.face*
 /.gnupg/
@@ -43,9 +46,11 @@ foo*
 /.steam/
 /.var/
 
-/install/hardware-configuration.nix
 /Desktop/
 /Downloads/
+/bin/rebar3
+/install/hardware-configuration.nix
+/user_default.erl
 
 /git/
 /wg2/

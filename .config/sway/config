@@ -65,6 +65,10 @@ input 1:1:AT_Translated_Set_2_keyboard {
     bindsym $mod+d exec $term --name=launcher -e $launcher
     for_window [app_id="^launcher$"] floating enable, border none
 
+    bindsym $mod+v splitv
+    bindsym $mod+h splith
+
+    bindsym $mod+shift+v exec pavucontrol-qt
     # reload the configuration file
     bindsym $mod+Shift+c reload
 

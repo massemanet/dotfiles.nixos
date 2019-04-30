@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # -*- mode: shell-script -*-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 #
@@ -35,7 +35,8 @@ export PS=""
 # shellcheck disable=SC2016
 if [ "$TERM" != "dumb" ]; then
     # set a fancy prompt
-    PS='\[\e[33m\]\h'
+    PS='\[\e[31m\]${IN_NIX_SHELL:+$IN_NIX_SHELL:}'
+    PS+='\[\e[33m\]\h'
     PS+='\[\e[34m\]${K8S:+[${K8S}]}'
     PS+='\[\e[36m\]${AWS_VAULT:+[${AWS_VAULT}]}'
     PS+='\[\e[35m\]($(mygitdir):$(mygitbranch))'
