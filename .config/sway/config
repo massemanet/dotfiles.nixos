@@ -107,7 +107,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    status_command while printf "%s\ :\ "  "$(nmcli -t -g name conn show --active)" "$(cat /sys/class/power_supply/BAT0/status)[$(( (60 * $(cat /sys/class/power_supply/BAT0/energy_now)) / $(cat /sys/class/power_supply/BAT0/power_now )))min]" "$(date +'%Y-%m-%d') $(date +'%H:%M:%S')"; do sleep 1; done
 
     colors {
         statusline #ffffff
