@@ -39,7 +39,7 @@ exec swayidle -w \
 
 input 1:1:AT_Translated_Set_2_keyboard {
   xkb_layout us,se
-  xkb_options ctrl:nocaps,grp:shifts-toggle
+  xkb_options ctrl:nocaps,grp:shifts_toggle
   repeat_delay 400
   repeat_rate 40
 }
@@ -107,7 +107,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while printf "%s\ :\ "  "$(nmcli -t -g name conn show --active)" "$(cat /sys/class/power_supply/BAT0/status)[$(( (60 * $(cat /sys/class/power_supply/BAT0/energy_now)) / $(cat /sys/class/power_supply/BAT0/power_now )))min]" "$(date +'%Y-%m-%d') $(date +'%H:%M:%S')"; do sleep 1; done
+    status_command _bat(){ [ $2 -ne 0 ] && echo "[$(((60*$1)/$2))min]" || echo "";}; while sleep 1; do printf "%s\ :\ "  "$(nmcli -t -g name conn show --active)" "$(cat /sys/class/power_supply/BAT0/status)$(_bat $(cat /sys/class/power_supply/BAT0/energy_now) $(cat /sys/class/power_supply/BAT0/power_now ))" "$(date +'%Y-%m-%d') $(date +'%H:%M:%S')"; done
 
     colors {
         statusline #ffffff
