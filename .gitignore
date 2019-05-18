@@ -24,6 +24,7 @@ foo*
 /.face*
 /.gnupg/
 /.gtkrc-*
+/.hex
 /.intellij/
 /.java/
 /.kde/
@@ -31,6 +32,7 @@ foo*
 /.lesshst
 /.local/
 /.localbashrc
+/.mix
 /.mozilla/
 /.nix-defexpr/
 /.nix-profile
@@ -48,9 +50,10 @@ foo*
 
 /Desktop/
 /Downloads/
-/bin/rebar3
 /install/hardware-configuration.nix
-/user_default.erl
 
+/bin/rebar3
 /git/
+/otp
+/user_default.erl
 /wg2/
