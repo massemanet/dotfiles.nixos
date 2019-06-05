@@ -37,40 +37,55 @@ cursor_shape = block
 
 # "off", "left" or "right"
 scrollbar = off
-
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-cursor = #dddd00
-cursor_foreground = #000000
+# Base16 Gruvbox light, hard
+# Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-foreground = #00dd00
-#foreground_bold = #ffffff
-background = #060606
+foreground          = #504945
+foreground_bold     = #3c3836
+cursor              = #3c3836
+cursor_foreground   = #f9f5d7
+background          = rgba(249, 245, 215)
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# 16 color space
 
-# If unset, will reverse foreground and background
-highlight = #2f2f2f
+# Black, Gray, Silver, White
+color0  = #f9f5d7
+color8  = #bdae93
+color7  = #504945
+color15 = #282828
 
-# Colors from color0 to color254 can be set
-color0 = #3f3f3f
-color1 = #705050
-color2 = #60b48a
-color3 = #dfaf8f
-color4 = #506070
-color5 = #dc8cc3
-color6 = #8cd0d3
-color7 = #dcdccc
-color8 = #709080
-color9 = #dca3a3
-color10 = #c3bf9f
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+# Red
+color1  = #9d0006
+color9  = #9d0006
+
+# Green
+color2  = #79740e
+color10 = #79740e
+
+# Yellow
+color3  = #b57614
+color11 = #b57614
+
+# Blue
+color4  = #076678
+color12 = #076678
+
+# Purple
+color5  = #8f3f71
+color13 = #8f3f71
+
+# Teal
+color6  = #427b58
+color14 = #427b58
+
+# Extra colors
+color16 = #af3a03
+color17 = #d65d0e
+color18 = #ebdbb2
+color19 = #d5c4a1
+color20 = #665c54
+color21 = #3c3836
 
 [hints]
 #font = Monospace 12

@@ -10,7 +10,7 @@
 (require 'align)
 (require 'erlang-start)
 (require 'company)
-(require 'company-distel)
+;;(require 'company-distel)
 
 (defun my-shell-mode ()
   "My erlang shell mode bindings."
@@ -20,8 +20,8 @@
   (local-set-key (kbd "C-p") 'comint-previous-input))
 (add-hook 'erlang-shell-mode-hook 'my-shell-mode)
 
-(distel-setup)
-(add-to-list 'company-backends 'company-distel-modules)
+;;(distel-setup)
+;;(add-to-list 'company-backends 'company-distel-modules)
 (setq company-require-match nil)
 (setq company-lighter nil)
 
