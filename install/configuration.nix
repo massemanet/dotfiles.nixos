@@ -13,12 +13,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = [
     {name = "root";
-     device = "/dev/sda2";
+     device = "/dev/nvme0n1p2";
      preLVM = true;
     }
   ];
 
-  networking.hostName = "xanax";
+  networking.hostName = "dysmorphic";
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.

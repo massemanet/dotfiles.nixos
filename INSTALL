@@ -3,6 +3,11 @@
 # boot into installer
 # set up the disk (efi boot, 8G swap, full disk encryption, LVM)
 ## see e.g. https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134
+
+# set up wifi
+wpa_passphrase "Wifi network SSID" "Wifi password" > /etc/wpa_supplicant.conf
+systemctl restart wpa_supplicant.service
+
 cat > /dev/null <<EOF
 $ gdisk /dev/sda
     o (create new empty partition table)
@@ -24,11 +29,27 @@ $ mount /dev/sda1 /mnt/boot
 $ swapon /dev/vg/swap
 EOF
 
-# boot into root
-nix-channel --add https://nixos.org/channels/nixos-19.03 nixos
+# generate hw description
+nixos-generate-config --root /mnt
+
+# get config from github
 URL=https://raw.githubusercontent.com/massemanet/dotfiles.nixos
-curl -fsSL "$URL/master/install/configuration.nix" > /etc/nixos/configuration.nix
-nixos-rebuild switch --upgrade
+curl "$URL/master/install/configuration.nix" > /mnt/etc/nixos/configuration.nix
+
+# in '/mnt/etc/nixos/configuration.nix', you must;
+# edit the name of the root lvm partition, e.g.
+#     device = "/dev/nvme0n1p2";
+# and the hostname, e.g.
+#     networking.hostName = "dysmorphic";
+
+# install
+nixos-install
+
+# set the user password
+passwd masse
+
+# reboot
+reboot now
 
 # boot in as user
 
@@ -40,11 +61,11 @@ scp massema.net:~/.ssh/id_rsa.pub ~/.ssh/
 ## get my stuff
 [ ! -e ~/.git ] &&
     cd /tmp && \
-	rm -rf dotfiles.nixos && \
-	git clone https://github.com/massemanet/dotfiles.nixos && \
-	cd dotfiles.nixos && \
-	git remote set-url origin git@github.com:massemanet/dotfiles.nixos && \
-	mv /tmp/dotfiles.nixos/.git ~
+        rm -rf dotfiles.nixos && \
+        git clone https://github.com/massemanet/dotfiles.nixos && \
+        cd dotfiles.nixos && \
+        git remote set-url origin git@github.com:massemanet/dotfiles.nixos && \
+        mv /tmp/dotfiles.nixos/.git ~
 (cd && git reset --hard)
 
 ## keep nix conf in ~ so we can git control
@@ -57,7 +78,7 @@ sudo rm  /etc/nixos/configuration.nix && \
 [ ! -d ~/.cask ] && \
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go > /tmp/c && \
     nix-shell -p python3 --command "python /tmp/c"
-(cd ~/.emacs.d && ~/.cask/bin/cask install)
+nix-shell -p python3 --command "cd ~/.emacs.d && ~/.cask/bin/cask install"
 
 ## flatpak is kind of nice
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
