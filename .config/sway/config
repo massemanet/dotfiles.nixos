@@ -47,12 +47,19 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 }
 
 ### output config
+output 'Sharp Corporation 0x144A 0x00000000' {
+  pos 0 1020
+  scale 2
+}
 
 output 'Dell Inc. DELL U2417H 5K9YD881CLTL' {
+  pos 1600 0
   transform 270
 }
-output 'Sharp Corporation 0x144A 0x00000000' {
-  scale 2
+
+output 'Dell Inc. DELL U2417H 5K9YD881CM9L' {
+  pos 2680 0
+  transform 90
 }
 
 ### Key bindings
