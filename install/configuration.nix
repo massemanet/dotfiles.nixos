@@ -59,6 +59,7 @@
     lxqt.pavucontrol-qt
     pass
     pgadmin
+    pstree
     qutebrowser
     shellcheck
     slurp
@@ -82,6 +83,9 @@
       auth include login
     '';
   };
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 
@@ -110,7 +114,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.masse = {
     createHome = true;
-    extraGroups = ["wheel" "audio" "networkmanager"];
+    extraGroups = ["wheel" "audio" "networkmanager" "docker"];
     isNormalUser = true;
     uid = 1000;
   };
