@@ -25,6 +25,12 @@ exec swayidle -w \
          before-sleep $locker
 
 ### Input configuration
+input "1118:2040:Microsoft_Wired_Keyboard_600" {
+  xkb_layout us,se
+  xkb_options ctrl:nocaps,grp:shifts_toggle
+  repeat_delay 400
+  repeat_rate 40
+}
 
 input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
   natural_scroll enabled
@@ -85,9 +91,14 @@ output 'Dell Inc. DELL U2417H 5K9YD881CM9L' {
     bindsym $mod+v splitv
     bindsym $mod+h splith
 
+    # sound
     bindsym $mod+shift+v exec pavucontrol-qt
+
     # reload the configuration file
     bindsym $mod+Shift+c reload
+
+    # lock screen
+    bindsym $mod+Shift+z exec $locker
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
