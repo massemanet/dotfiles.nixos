@@ -21,7 +21,7 @@ set $locker 'swaylock -i hexdump.png -f -c 000000 --ignore-empty-password'
 exec swayidle -w \
          timeout 300 $locker \
          timeout 600 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
+             resume 'swaymsg "output * dpms on"' \
          before-sleep $locker
 
 ### Input configuration
@@ -68,65 +68,6 @@ output 'Dell Inc. DELL U2417H 5K9YD881CM9L' {
   transform 90
 }
 
-### Key bindings
-#
-# Basics:
-#
-    # focus
-    bindsym $mod+j focus left
-    bindsym $mod+k focus up
-    bindsym $mod+l focus down
-    bindsym $mod+semicolon focus right
-
-    # start a terminal
-    bindsym $mod+Return exec $term
-
-    # kill focused window
-    bindsym $mod+Shift+q kill
-
-    # start your launcher
-    bindsym $mod+d exec $term --name=launcher -e $launcher
-    for_window [app_id="^launcher$"] floating enable, border none
-
-    bindsym $mod+v splitv
-    bindsym $mod+h splith
-
-    # sound
-    bindsym $mod+shift+v exec pavucontrol-qt
-
-    # reload the configuration file
-    bindsym $mod+Shift+c reload
-
-    # lock screen
-    bindsym $mod+Shift+z exec $locker
-
-    # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-
-# Workspaces:
-    # switch to workspace
-    bindsym $mod+1 workspace 1
-    bindsym $mod+2 workspace 2
-    bindsym $mod+3 workspace 3
-    bindsym $mod+4 workspace 4
-    bindsym $mod+5 workspace 5
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
-    # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace 1
-    bindsym $mod+Shift+2 move container to workspace 2
-    bindsym $mod+Shift+3 move container to workspace 3
-    bindsym $mod+Shift+4 move container to workspace 4
-    bindsym $mod+Shift+5 move container to workspace 5
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
-
 #
 # Status Bar:
 
@@ -143,3 +84,68 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+### lid switch
+# turn off internal screen when lid is closed
+
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+
+### Key bindings
+#
+# Basics:
+#
+# focus
+bindsym $mod+j focus left
+bindsym $mod+k focus up
+bindsym $mod+l focus down
+bindsym $mod+semicolon focus right
+
+# start a terminal
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start your launcher
+bindsym $mod+d exec $term --name=launcher -e $launcher
+for_window [app_id="^launcher$"] floating enable, border none
+
+bindsym $mod+v splitv
+bindsym $mod+h splith
+
+# sound
+bindsym $mod+shift+v exec pavucontrol-qt
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# lock screen
+bindsym $mod+Shift+z exec $locker
+
+# exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Workspaces:
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10

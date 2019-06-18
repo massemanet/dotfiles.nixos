@@ -8,7 +8,9 @@ _bat() {
     [ "$POWER" -ne 0 ] && echo "${STATUS}[$(((60*ENERGY)/POWER))min]" || echo "$STATUS"
 }
 _net() {
-    nmcli -t -g name conn show --active
+    local T
+    T="$(nmcli -g name,type connection show --active | grep wireless)"
+    [ -n "$T" ] && echo "$T" | cut -f1 -d":"
 }
 
 _date() {
@@ -20,4 +22,3 @@ _time() {
 }
 
 printf "%s : " "$(_net)" "$(_bat)" "$(_date)" "$(_time)"
-
