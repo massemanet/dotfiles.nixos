@@ -24,11 +24,11 @@ c.bindings.commands['normal'] = {
 	'<alt-v>'        : 'scroll-page 0 -0.5',
 	'<ctrl-shift-v>' : 'scroll-page 0 1',
 	'<alt-shift-v>'  : 'scroll-page 0 -1',
-        '<ctrl-shift-r>' : 'reload',
+        '<alt-shift-r>'  : 'reload',
 	# FIXME come up with logical bindings for scrolling left/right
 
 	# Commands
-	'<alt-x>': 'set-cmd-text :',
+	'<alt-x>'  : 'set-cmd-text :',
 	'<ctrl-x>b': 'set-cmd-text -s :buffer',
 	'<ctrl-x>k': 'tab-close',
 	'<ctrl-x><ctrl-c>': 'quit',
@@ -38,7 +38,7 @@ c.bindings.commands['normal'] = {
 	'<ctrl-r>': 'set-cmd-text ?',
 
 	# hinting
-	'<alt-s>': 'hint all',
+	'<alt-shift-s>': 'hint all',
 
 	# history
 	# FIXME maybe this should be <C-b> <C-n>? Or would that be too confusing?

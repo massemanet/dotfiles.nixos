@@ -52,6 +52,8 @@ foo*
 /Downloads/
 /install/hardware-configuration.nix
 
+/.terraform.d/
+/.wg2/
 /bin/rebar3
 /git/
 /otp

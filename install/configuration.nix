@@ -37,8 +37,8 @@
     aspell
     aspellDicts.en
     aspellDicts.sv
-    awscli
     aws-vault
+    awscli
     coreutils-full
     curl
     docker
@@ -54,9 +54,9 @@
     keybase
     kubectl
     libinput
-    mosh
     lsof
     lxqt.pavucontrol-qt
+    mosh
     pass
     pgadmin
     pstree
@@ -77,18 +77,19 @@
   ];
 
   # enable swaylock to unlock
-
   security.pam.services.swaylock = {
     text = ''
       auth include login
     '';
   };
 
+  # bash_completion
+  programs.bash.enableCompletion = true;
+
   # Enable Docker
   virtualisation.docker.enable = true;
 
   # List services that you want to enable:
-
   services.flatpak.enable = true;
   services.keybase.enable = true;
   services.openssh.enable = true;
