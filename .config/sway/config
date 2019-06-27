@@ -2,7 +2,7 @@
 
 ### Variables
 
-# Logo key. Use Mod1 for Alt.
+# Logo key. Use Mod1 for Alt. Mod4 is Windows.
 set $mod Mod4
 
 # Your preferred terminal emulator
@@ -25,7 +25,7 @@ exec swayidle -w \
          before-sleep $locker
 
 ### Input configuration
-input "1118:2040:Microsoft_Wired_Keyboard_600" {
+input "3727:32:GASIA_PS2toUSB_Adapter_Consumer_Control" {
   xkb_layout us,se
   xkb_options ctrl:nocaps,grp:shifts_toggle
   repeat_delay 400
