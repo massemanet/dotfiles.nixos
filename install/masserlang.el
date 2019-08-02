@@ -31,13 +31,33 @@
               (erlang-indent-level . 2))))
 
 (defun my-erlang-mode-hook ()
-  "We want company mode and flycheck"
+  "We want company mode and flycheck."
   (setq
-   flycheck-erlang-include-path
-   (file-expand-wildcards (concat (flycheck-rebar3-project-root) "_build/*/lib/*/include"))
-   flycheck-erlang-library-path
-   (file-expand-wildcards (concat (flycheck-rebar3-project-root) "_build/*/lib/*/ebin")))
-  (company-mode t))
+   flycheck-erlang-executable "/home/masse/otp/bin/erlc"
+   flycheck-erlang-include-path (file-expand-wildcards
+                                 (concat
+                                  (flycheck-rebar3-project-root)
+                                  "_build/*/lib/*/include"))
+   flycheck-erlang-library-path (file-expand-wildcards
+                                 (concat
+                                  (flycheck-rebar3-project-root)
+                                  "_build/*/lib/*/ebin")))
+  (company-mode t)
+  (unless (null buffer-file-name)
+    (make-local-variable 'compile-command)
+    (setq compile-command
+          (cond ((file-exists-p "../rebar.config")
+                 "cd .. && rebar3 compile")
+                ((file-exists-p "Makefile")
+                 "make -k")
+                ((file-exists-p "../Makefile")
+                 "make -kC..")
+                (t (concat
+                    "erlc "
+                    (if (file-exists-p "../ebin") "-o ../ebin " "")
+                    (if (file-exists-p "../include") "-I ../include " "")
+                    "+debug_info -W "
+                    buffer-file-name))))))
 
 (add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
 
@@ -49,19 +69,6 @@
   (insert (concat "-export([]).\n\n")))
 
 (add-hook 'erlang-new-file-hook 'my-erlang-new-file-hook)
-
-;; make hack for compile command
-;; uses Makefile if it exists, else looks for ../inc & ../ebin
-(unless (null buffer-file-name)
-  (make-local-variable 'compile-command)
-  (setq compile-command
-        (cond ((file-exists-p "Makefile")  "make -k")
-              ((file-exists-p "../Makefile")  "make -kC..")
-              (t (concat
-                  "erlc "
-                  (if (file-exists-p "../ebin") "-o ../ebin " "")
-                  (if (file-exists-p "../include") "-I ../include " "")
-                  "+debug_info -W " buffer-file-name)))))
 
 (provide 'masserlang)
 

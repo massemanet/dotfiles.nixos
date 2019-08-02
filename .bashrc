@@ -57,23 +57,6 @@ c()    { cat "$@"; }
 g()    { grep -nIHE --color "$@"; }
 m()    { less "$@"; }
 
-startcontainer() {
-    local S=~/git/dockerfiles/$1/$1.sh
-    if [ -x "$S" ]
-    then eval "$S ${2:-""} ${3:-""}"
-    else echo "fail - expected this file to exist: $S"
-    fi
-}
-
-base()   { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~"}"; }
-dotnet() { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-erlang() { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-dgo()    { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-djava()  { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-djulia() { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-drust()  { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/git"}"; }
-wg2()    { startcontainer "${FUNCNAME[0]}" "${1:-"bash"}" "${2:-"~/wg2"}"; }
-
 prompt_exit() {
     eval "$1='$?'; [ \$$1 == 0 ] && unset $1"
 }

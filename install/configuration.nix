@@ -37,6 +37,8 @@
     aspell
     aspellDicts.en
     aspellDicts.sv
+    autoconf
+    automake
     aws-vault
     awscli
     coreutils-full
@@ -47,6 +49,7 @@
     file
     flatpak
     fzf
+    gcc
     git
     gnupg
     grim
@@ -54,12 +57,20 @@
     keybase
     kubectl
     libinput
+    lksctp-tools
     lsof
+    lttng-tools
+    lttng-ust
     lxqt.pavucontrol-qt
+    gnumake
     mosh
+    ncurses
+    openssl
     pass
+    pavucontrol
     pgadmin
     pstree
+    qt5.qtbase
     qutebrowser
     shellcheck
     slurp

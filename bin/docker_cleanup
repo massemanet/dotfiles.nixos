@@ -10,5 +10,4 @@ done
 
 docker network prune -f
 docker volume prune -f
-
 docker images | sort -V

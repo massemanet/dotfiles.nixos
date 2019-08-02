@@ -107,6 +107,7 @@ Repeated invocations toggle between the two most recently open buffers."
 (global-set-key (kbd "C-c r")   'register-to-point)
 (global-set-key (kbd "C-v")     `scroll-up)
 (global-set-key (kbd "C-x C-r") 'revert-buffer)
+(global-set-key (kbd "C-x C-z") `undo) ; default is to hang emacs under wayland.
 (global-set-key (kbd "C-x O")   'prev-window)
 (global-set-key (kbd "C-x c")   'execute-extended-command)
 (global-set-key (kbd "C-x |")   'set-80-columns)
@@ -191,7 +192,6 @@ Repeated invocations toggle between the two most recently open buffers."
  '(custom-safe-themes
    (quote
     ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8e797edd9fa9afec181efbfeeebf96aeafbd11b69c4c85fa229bb5b9f7f7e66c" "b583823b9ee1573074e7cbfd63623fe844030d911e9279a7c8a5d16de7df0ed0" default)))
- '(flycheck-erlang-executable "erlc")
  '(package-selected-packages
    (quote
     (yaml-mode solarized-theme smart-mode-line rust-playground purescript-mode projectile pallet nyan-mode lsp-ui lsp-java kubernetes julia-repl julia-mode json-mode js2-mode highlight-parentheses gruvbox-theme go-mode flymake-rust flymake-jshint flycheck-rust flycheck-julia flycheck-elixir flycheck-demjsonlint exec-path-from-shell erlang eproject dockerfile-mode dap-mode company-lsp company-distel cargo)))
