@@ -37,14 +37,9 @@
     aspell
     aspellDicts.en
     aspellDicts.sv
-    autoconf
-    automake
-    aws-vault
-    awscli
     coreutils-full
     curl
     docker
-    docker-compose
     emacs
     file
     flatpak
@@ -52,23 +47,22 @@
     gcc
     git
     gnupg
+    gnumake
     grim
     jq
-    keybase
-    kubectl
     libinput
     lksctp-tools
     lsof
     lttng-tools
     lttng-ust
     lxqt.pavucontrol-qt
-    gnumake
+    keybase
     mosh
     ncurses
     openssl
     pass
+    patch
     pavucontrol
-    pgadmin
     pstree
     qt5.qtbase
     qutebrowser
@@ -81,9 +75,7 @@
     termite
     tmux
     tree
-    tshark
     unzip
-    wireshark
     xwayland
   ];
 
@@ -123,6 +115,8 @@
   # enable openGL
   hardware.opengl.enable = true;
 
+  # flatpak wants you to enable XDG Desktop Portals
+  xdg.portal.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.masse = {
     createHome = true;

@@ -30,15 +30,15 @@ export EDITOR="emacsclient -ct -a ''"
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWDIRTYSTATE=true
-export PROMPT_COMMAND='prompt_exit LX; prompt_ps ; prompt_title ; prompt_history'
+export PROMPT_COMMAND='prompt_exit LX; prompt_ps ; prompt_nix _NIX_ENV; prompt_history'
 if [ -f ~/.kube/config ] && test "$(command -v kubectl)" ; then
-    PROMPT_COMMAND+="; prompt_k8s"
+    PROMPT_COMMAND+='; prompt_k8s K8S'
 fi
 export PS=""
 # shellcheck disable=SC2016
 if [ "$TERM" != "dumb" ]; then
     # set a fancy prompt
-    PS='\[\e[31m\]${IN_NIX_SHELL:+$IN_NIX_SHELL:}'
+    PS='\[\e[31m\]${_NIX_ENV:+$_NIX_ENV:}'
     PS+='\[\e[33m\]\h'
     PS+='\[\e[34m\]${K8S:+[${K8S}]}'
     PS+='\[\e[36m\]${AWS_VAULT:+[${AWS_VAULT}]}'
@@ -48,6 +48,8 @@ if [ "$TERM" != "dumb" ]; then
 else
     PS="\\h\\$ "
 fi
+
+please() { sudo $(fc -ln -1); }
 
 dir()  { ls -AlFh --color "$@"; }
 dirt() { dir -rt "$@"; }
@@ -65,8 +67,8 @@ prompt_ps() {
     export PS1="$PS"
 }
 
-prompt_title() {
-    [ "$TERM_PROGRAM" = "Apple_Terminal" ] && printf "\\e]1;%s\\a" "$(mygitdir)"
+prompt_nix() {
+    eval "$1='$(echo "${name:-""}" | cut -f-2 -d"-")'"
 }
 
 prompt_history() {
@@ -74,7 +76,7 @@ prompt_history() {
 }
 
 prompt_k8s() {
-    K8S=$(grep -o "current-context.*" ~/.kube/config | cut -c18-)
+    eval "$1='$(grep -o "current-context.*" ~/.kube/config | cut -c18-)'"
 }
 
 ## history
