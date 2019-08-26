@@ -1,5 +1,6 @@
 # droppings
 
+*.TAGS
 *.beam
 *~
 .\#*
@@ -28,6 +29,7 @@ foo*
 /.intellij/
 /.java/
 /.kde/
+/.kube/
 /.lastpass/
 /.lesshst
 /.local/
