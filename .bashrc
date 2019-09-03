@@ -16,8 +16,9 @@ shopt -s checkwinsize
 # pretty colors
 eval "$(dircolors)"
 
-# shellcheck source=git/hecs/hecs_completions.sh
-[ -f "$HOME/git/hecs/hecs_completions.sh" ] && . "$HOME/git/hecs/hecs_completions.sh"
+# nixos and bash-completion has some friction
+# shellcheck source=completions.sh
+[ -f "$HOME/completions.sh" ] && . "$HOME/completions.sh"
 
 # define some git helpers
 # shellcheck source=bin/gitfunctions

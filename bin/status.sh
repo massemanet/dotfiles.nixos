@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 _bat() {
-    local STATUS ENERGY POWER
+    local STATUS CAPACITY ENERGY POWER
     STATUS="$(cat /sys/class/power_supply/BAT0/status)"
-    ENERGY="$(cat /sys/class/power_supply/BAT0/energy_now)"
-    POWER="$(cat /sys/class/power_supply/BAT0/power_now)"
-    [ "$POWER" -ne 0 ] && echo "${STATUS}[$(((60*ENERGY)/POWER))min]" || echo "$STATUS"
+    CAPACITY="$(cat /sys/class/power_supply/BAT0/capacity)"
+    ENERGY="$(cat /sys/class/power_supply/BAT0/charge_now)"
+    POWER="$(cat /sys/class/power_supply/BAT0/current_now)"
+    [ "$POWER" -ne 0 ] && [ "$STATUS" != "Full" ] && TIME="($((60*(ENERGY/10000)/(POWER/10000)))min)"
+    echo "${STATUS}[${CAPACITY}%${TIME:-""}]" || echo "$STATUS"
 }
 _net() {
     local T

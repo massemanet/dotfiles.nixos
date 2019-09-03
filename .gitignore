@@ -57,6 +57,7 @@ foo*
 /.terraform.d/
 /.wg2/
 /bin/rebar3
+/bin/hecs
 /git/
 /otp
 /user_default.erl

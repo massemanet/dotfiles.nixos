@@ -1,7 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-
   hcl = pkgs.python37Packages.buildPythonPackage rec {
     pname = "pyhcl";
     version = "0.3.9";
@@ -30,7 +29,6 @@ let
     propagatedBuildInputs = [ pkgs.python37Packages.requests ];
     doCheck = false;
   };
-
 in
 
 (pkgs.buildFHSUserEnv {
@@ -41,10 +39,12 @@ in
     automake
     aws-vault
     awscli
+    bash-completion
     bazel
     bazelisk
     binutils
     docker_compose
+    git
     glibcLocales
     go
     gradle
