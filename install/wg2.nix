@@ -29,6 +29,7 @@ let
     propagatedBuildInputs = [ pkgs.python37Packages.requests ];
     doCheck = false;
   };
+
 in
 
 (pkgs.buildFHSUserEnv {
@@ -50,6 +51,8 @@ in
     gradle
     kubectl
     libpcap
+    lksctp-tools
+    lttng-ust
     maven
     openjdk
     pgadmin
@@ -65,4 +68,5 @@ in
     gcc.cc
     zlib
   ]);
+  runScript = "ssh-agent ~/bin/ssh-id.sh";
 }).env
