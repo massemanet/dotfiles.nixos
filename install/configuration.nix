@@ -42,6 +42,7 @@
     docker
     emacs
     file
+    firefox-beta-bin
     flatpak
     fzf
     gcc
@@ -120,7 +121,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.masse = {
     createHome = true;
-    extraGroups = ["wheel" "audio" "networkmanager" "docker"];
+    extraGroups = ["wheel" "audio" "video" "networkmanager" "docker"];
     isNormalUser = true;
     uid = 1000;
   };
