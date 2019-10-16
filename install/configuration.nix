@@ -13,12 +13,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = [
     {name = "root";
-     device = "/dev/disk/by-uuid/8aab5aee-9a1a-4811-b3e6-528bef191ab8";
+     device = "/dev/sda2";
      preLVM = true;
     }
   ];
 
-  networking.hostName = "dysmorph";
+  networking.hostName = "xanax";
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -64,6 +64,7 @@
     ncurses
     nload
     openssl
+    pandoc
     pass
     patch
     pavucontrol
@@ -78,6 +79,7 @@
     swaylock
     telnet
     termite
+    texlive.combined.scheme-medium
     tree
     unzip
     wl-clipboard
@@ -103,7 +105,6 @@ RuntimeDirectorySize=60%
   ";
 
   # List services that you want to enable:
-  services.flatpak.enable = true;
   services.keybase.enable = true;
   services.openssh.enable = true;
 
@@ -131,8 +132,6 @@ RuntimeDirectorySize=60%
   # enable openGL
   hardware.opengl.enable = true;
 
-  # flatpak wants you to enable XDG Desktop Portals
-  xdg.portal.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.masse = {
     createHome = true;

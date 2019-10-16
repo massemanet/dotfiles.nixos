@@ -60,12 +60,16 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 }
 
 ### output config
-#  Current mode: 1920x1080 @ 60.049000 Hz
-output 'Unknown 0x313D 0x00000000' {
-  pos 0 840
+#  Current mode: 1366x768 @ 60.001999 Hz
+output 'Unknown 0x02D3 0x00000000' {
+  pos 0 256
 }
 
-#  Current mode: 3200x1800 @ 60.000000 Hz
+#  Current mode: 1280x1024 @ 60.020000 Hz
+output 'Samsung Electric Company SyncMaster HSHXA14328' {
+  pos 1367 0
+}
+
 output 'Sharp Corporation 0x144A 0x00000000' {
   pos 320 1020
   scale 2

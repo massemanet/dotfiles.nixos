@@ -1,4 +1,0 @@
-#!/bin/bash
-
-unset PYTHONPATH
-exec /nix/store/vvanysg1ab7cfzdksh3k6y01jbd09bmd-awscli-1.16.170/bin/aws "$@"
