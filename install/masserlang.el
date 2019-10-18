@@ -4,9 +4,9 @@
 ;;; Code:
 
 (require 'align)
-(require 'erlang-start)
 (require 'company)
-;;(require 'company-distel)
+(require 'erlang)
+;;(require 'edts)
 
 (defun my-shell-mode ()
   "My erlang shell mode bindings."

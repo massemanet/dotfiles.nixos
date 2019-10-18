@@ -44,10 +44,12 @@ in
     bazel
     bazelisk
     binutils
+    docker
     docker_compose
     git
     glibcLocales
     go
+    gopass
     gradle
     kubectl
     libpcap

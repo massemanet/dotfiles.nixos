@@ -37,6 +37,8 @@
     aspell
     aspellDicts.en
     aspellDicts.sv
+    blueman
+    brave
     coreutils-full
     curl
     docker
@@ -60,6 +62,7 @@
     keybase
     mosh
     ncurses
+    nload
     openssl
     pass
     patch
@@ -73,10 +76,12 @@
     sway
     swayidle
     swaylock
+    telnet
     termite
     tmux
     tree
     unzip
+    wl-clipboard
     xwayland
   ];
 
@@ -109,9 +114,15 @@
       proggyfonts
   ];
 
+  # enable bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
 
   # enable openGL
   hardware.opengl.enable = true;

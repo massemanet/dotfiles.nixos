@@ -31,6 +31,15 @@
 (setq sml/no-confirm-load-theme t)
 (add-hook 'after-init-hook 'sml/setup)
 
+;;;(wayland-paste)
+;;;(defun wayland-paste ()
+;;;  (async-shell-command "wl-paste --primary"))
+;;;(global-set-key (kbd "<mouse-2>") 'clipboard-yank)
+;;;(global-set-key (kbd "<mouse-2>") 'mouse-yank-at-click)
+;;;(defun wayland-copy (text) (shell-command-to-string (concat "wl-copy --primary" text)))
+;;;(setq interprogram-paste-function 'wayland-paste)
+;;;(setq interprogram-copy-function 'wayland-copy)
+
 ;; turn off bad shit
 (if (featurep 'tool-bar)   (tool-bar-mode   -1))
 (if (featurep 'tabbar)     (tabbar-mode     -1))
@@ -189,12 +198,16 @@ Repeated invocations toggle between the two most recently open buffers."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-etags-tags-file-name "~/.emacs.d/root.tag")
  '(custom-safe-themes
    (quote
     ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8e797edd9fa9afec181efbfeeebf96aeafbd11b69c4c85fa229bb5b9f7f7e66c" "b583823b9ee1573074e7cbfd63623fe844030d911e9279a7c8a5d16de7df0ed0" default)))
  '(package-selected-packages
    (quote
-    (yaml-mode solarized-theme smart-mode-line rust-playground purescript-mode projectile pallet nyan-mode lsp-ui lsp-java kubernetes julia-repl julia-mode json-mode js2-mode highlight-parentheses gruvbox-theme go-mode flymake-rust flymake-jshint flycheck-rust flycheck-julia flycheck-elixir flycheck-demjsonlint exec-path-from-shell erlang eproject dockerfile-mode dap-mode company-lsp company-distel cargo)))
+    (bazel-mode company-erlang company-quickhelp yaml-mode solarized-theme smart-mode-line rust-playground purescript-mode projectile pallet nyan-mode kubernetes julia-repl julia-mode json-mode js2-mode highlight-parentheses gruvbox-theme go-mode flymake-rust flymake-jshint flycheck-rust flycheck-julia flycheck-elixir flycheck-demjsonlint exec-path-from-shell erlang dockerfile-mode cargo)))
+ '(tags-table-list
+   (quote
+    ("/home/masse/.emacs.d/tags/pamp.tags" "/home/masse/.emacs.d/tags/starlet.tags" "/home/masse/.emacs.d/tags/root.tags")))
  '(term-default-bg-color nil)
  '(term-default-fg-color nil))
 
