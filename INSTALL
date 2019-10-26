@@ -68,5 +68,6 @@ scp massema.net:~/.ssh/id_rsa.pub ~/.ssh/
 (cd && git reset --hard)
 
 ## keep nix conf in ~ so we can git control
-sudo rm  /etc/nixos/configuration.nix && \
-    sudo ln -s ~/install/configuration.nix /etc/nixos/
+sudo rm -f /etc/nixos/configuration.nix ~root/.nix-channels && \
+    sudo ln -s ~/install/configuration.nix /etc/nixos/ && \
+    sudo ln -s  ~/.nix-channels ~root

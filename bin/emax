@@ -1,1 +1,5 @@
-nix-shell -p libpcap erlangR22 rebar3 gcc gnumake --run 'emacz&'
+#!/usr/bin/env bash
+
+nix-shell \
+    -p libpcap erlangR22 rebar3 gcc gnumake shellcheck bazel \
+    --run 'emacz&'
