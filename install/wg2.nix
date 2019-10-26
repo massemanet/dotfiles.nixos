@@ -70,5 +70,5 @@ in
     gcc.cc
     zlib
   ]);
-  runScript = "ssh-agent ~/bin/ssh-id.sh";
+  runScript = "ssh-agent ~/bin/wg2.sh";
 }).env

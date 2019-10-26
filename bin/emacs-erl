@@ -1,1 +1,0 @@
-nix-shell -p libpcap erlangR21 rebar3 gcc gnumake --run 'emacs&'

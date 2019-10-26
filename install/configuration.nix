@@ -13,12 +13,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = [
     {name = "root";
-     device = "/dev/nvme0n1p2";
+     device = "/dev/disk/by-uuid/8aab5aee-9a1a-4811-b3e6-528bef191ab8";
      preLVM = true;
     }
   ];
 
-  networking.hostName = "dysmorphic";
+  networking.hostName = "dysmorph";
   networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
@@ -44,8 +44,6 @@
     docker
     emacs
     file
-    firefox-beta-bin
-    flatpak
     fzf
     gcc
     git
@@ -78,7 +76,6 @@
     swaylock
     telnet
     termite
-    tmux
     tree
     unzip
     wl-clipboard

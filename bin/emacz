@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+[ ! -d ~/.cask ] && \
+    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go > /tmp/caskinit && \
+    nix-shell -p python3 --command "python /tmp/caskinit"
+nix-shell -p python3 --command "cd ~/.emacs.d && ~/.cask/bin/cask install"
+emacs

@@ -33,6 +33,12 @@ input "3727:32:GASIA_PS2toUSB_Adapter_Consumer_Control" {
   repeat_rate 40
 }
 
+input "1739:0:Synaptics_TM3289-002" {
+  natural_scroll enabled
+  tap enabled
+  tap_button_map lmr
+}
+
 input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
   natural_scroll enabled
   tap enabled
