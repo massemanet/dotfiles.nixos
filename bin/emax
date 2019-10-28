@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-nix-shell \
-    -p libpcap erlangR22 rebar3 gcc gnumake shellcheck bazel \
-    --run 'emacz&'
+if [ -z "${IN_NIX_SHELL:-""}" ] ; then
+    nix-shell \
+        -p python3 libpcap erlangR22 rebar3 gcc gnumake shellcheck bazel \
+        --command emacz
+else
+    emacz
+fi
