@@ -15,6 +15,12 @@ _net() {
     [ -n "$T" ] && echo "$T" | cut -f1 -d":"
 }
 
+_ping() {
+    local T
+    T=$(ping -c1 -W1 google.com | grep -Eo "time=.* " | cut -f2 -d"=")
+    [ -n "$T" ] && echo "$T"
+}
+
 _date() {
     date +'%Y-%m-%d'
 }
@@ -23,4 +29,4 @@ _time() {
     date +'%H:%M:%S'
 }
 
-printf "%s : " "$(_net)" "$(_bat)" "$(_date)" "$(_time)"
+printf "%s : " "$(_net)" "$(_ping)" "$(_bat)" "$(_date)" "$(_time)"

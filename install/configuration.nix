@@ -44,6 +44,7 @@
     docker
     emacs
     file
+    firefox-wayland
     fzf
     gcc
     git
@@ -94,6 +95,11 @@
 
   # Enable Docker
   virtualisation.docker.enable = true;
+
+  # size of /run/user/<uid>
+  services.logind.extraConfig = "
+RuntimeDirectorySize=60%
+  ";
 
   # List services that you want to enable:
   services.flatpak.enable = true;

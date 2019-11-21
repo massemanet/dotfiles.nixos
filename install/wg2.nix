@@ -46,6 +46,7 @@ in
     binutils
     docker
     docker_compose
+    erlangR22
     git
     glibcLocales
     go
@@ -59,6 +60,7 @@ in
     openjdk
     pgadmin
     python2 (python3.withPackages (ps: [ps.semver ps.pyyaml slacker hcl ]))
+    rebar3
     tshark
     wireshark
   ]);

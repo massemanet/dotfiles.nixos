@@ -39,6 +39,7 @@ foo*
 /.nix-defexpr/
 /.nix-profile
 /.nmcli*
+/.npm/
 /.password-store/
 /.pgAdmin*
 /.pgadmin*

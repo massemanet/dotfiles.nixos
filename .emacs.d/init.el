@@ -1,3 +1,4 @@
+
 ;;; -*- mode: lisp -*-
 
 ;;; package handling
@@ -75,6 +76,8 @@
    (invert-face 'mode-line)
    (run-with-timer 0.1 nil 'invert-face 'mode-line))
 
+;; set theme
+(my-lite)
 ;; configs
 (setq
  default-input-method     "swedish-postfix"
@@ -216,5 +219,5 @@ Repeated invocations toggle between the two most recently open buffers."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background "#f9f5d7" :foreground "#282828" :weight normal :height 150 :family "ProggyCleanTT"))))
+ '(default ((t (:foreground "#282828" :weight normal :height 180 :family "ProggyCleanTT"))))
  '(magit-section-highlight ((t (:background "chartreuse")))))
