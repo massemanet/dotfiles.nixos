@@ -41,6 +41,7 @@
     brave
     coreutils-full
     curl
+    dnsutils
     docker
     emacs
     file
