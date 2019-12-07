@@ -49,7 +49,7 @@ foo*
 /.pulse-cookie
 /.python_history
 /.ssh/
-/.steam/
+/.steam*
 /.var/
 
 /Desktop/

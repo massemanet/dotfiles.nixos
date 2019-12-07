@@ -62,6 +62,7 @@ in
     python2 (python3.withPackages (ps: [ps.semver ps.pyyaml slacker hcl ]))
     rebar3
     socat
+    python3
     tshark
     wireshark
   ]);

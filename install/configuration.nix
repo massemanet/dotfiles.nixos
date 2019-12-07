@@ -44,6 +44,7 @@
     dnsutils
     docker
     emacs
+    erlangR22
     file
     firefox-wayland
     fzf
@@ -54,6 +55,7 @@
     grim
     jq
     libinput
+    libyaml
     lksctp-tools
     lsof
     lttng-tools
@@ -74,6 +76,7 @@
     shellcheck
     slurp
     spotify
+    steam
     sway
     swayidle
     swaylock
@@ -126,11 +129,14 @@ RuntimeDirectorySize=60%
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
+    support32Bit = true;
     package = pkgs.pulseaudioFull;
   };
 
   # enable openGL
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.masse = {
