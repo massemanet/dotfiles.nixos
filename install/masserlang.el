@@ -29,7 +29,8 @@
 (defun my-erlang-mode-hook ()
   "We want company mode and flycheck."
   (setq
-   flycheck-erlang-executable "/home/masse/otp/bin/erlc"
+   flycheck-erlang-executable "/usr/bin/erlc"
+   flycheck-erlang-rebar3-executable "/usr/bin/rebar3"
    flycheck-erlang-include-path (append
                                  (file-expand-wildcards
                                   (concat

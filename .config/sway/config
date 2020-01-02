@@ -74,7 +74,7 @@ output 'Sharp Corporation 0x144A 0x00000000' {
 #  Current mode: 1920x1080 @ 60.000000 Hz
 output 'Dell Inc. DELL U2417H 5K9YD881CLTL' {
   pos 1920 0
-  transform 270
+  transform 90
 }
 
 #  Current mode: 1920x1080 @ 60.000000 Hz

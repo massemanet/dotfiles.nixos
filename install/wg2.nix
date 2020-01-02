@@ -52,6 +52,7 @@ in
     go
     gopass
     gradle
+    jetbrains.idea-community
     kubectl
     libpcap
     lksctp-tools
